@@ -22,18 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   getCallRecords() {
-    this.api.getAllCalls().subscribe((data) =>{ console.log(data);this.callsData = data });
+    this.api.getAllCalls().subscribe(data => this.callsData = data );
   }
-
-  /*onTableDataChanges(event: any) {
-    this.page = event;
-    this.getCallRecords();
-  }
-
-  onTableSizeChange(event: any): void {
-    this.callSize = event.target.value;
-    this.page = 1;
-    this.getCallRecords();
-  }*/
 
 }

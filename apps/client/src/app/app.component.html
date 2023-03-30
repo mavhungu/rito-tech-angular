@@ -2,10 +2,14 @@
 
   <clr-datagrid>
 
-    <clr-dg-column>User ID</clr-dg-column>
-    <clr-dg-column>Name</clr-dg-column>
-    <clr-dg-column>Creation date</clr-dg-column>
-    <clr-dg-column>Favorite color</clr-dg-column>
+    <clr-dg-column>ID</clr-dg-column>
+    <clr-dg-column>CallFrom</clr-dg-column>
+    <clr-dg-column>CallTo</clr-dg-column>
+    <clr-dg-column>CallTime</clr-dg-column>
+    <clr-dg-column>Duration</clr-dg-column>
+    <clr-dg-column>Billing</clr-dg-column>
+    <clr-dg-column>Cost</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of callsData">
       <clr-dg-action-overflow>
@@ -13,8 +17,12 @@
       </clr-dg-action-overflow>
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
         <clr-dg-cell>{{user.CallFrom}}</clr-dg-cell>
+        <clr-dg-cell>{{user.CallTo}}</clr-dg-cell>
         <clr-dg-cell>{{user.CallTime | date}}</clr-dg-cell>
         <clr-dg-cell>{{user.Duration}}</clr-dg-cell>
+        <clr-dg-cell>{{user.Billing}}</clr-dg-cell>
+        <clr-dg-cell>{{user.Cost}}</clr-dg-cell>
+        <clr-dg-cell>{{user.Status}}</clr-dg-cell>
     </clr-dg-row>
 
 
@@ -23,7 +31,6 @@
         <clr-dg-page-size [clrPageSizeOptions]="[20,50,75,100]">Call Records</clr-dg-page-size>
           {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{callsData.length}} Records
       </clr-dg-pagination>
-       
     </clr-dg-footer>
 
 </clr-datagrid>
