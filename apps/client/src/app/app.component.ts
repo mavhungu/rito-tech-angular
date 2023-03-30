@@ -19,10 +19,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCallRecords();
+    this.getAllCallsByYear();
   }
 
   getCallRecords() {
     this.api.getAllCalls().subscribe(data => this.callsData = data );
+  }
+
+  getAllCallsByYear() {
+    this.api.getAllCallsByYear().subscribe((data)=>{console.log(data)});
   }
 
 }

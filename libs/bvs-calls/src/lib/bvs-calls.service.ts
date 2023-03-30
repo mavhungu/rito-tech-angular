@@ -15,6 +15,10 @@ export class BvsCallsService {
     return allUsers;
   }
 
+  async getAllCallsByYear() {
+    return await 'All cals';
+  }
+
   async saveCalls(createBvscallsDto: CreateBvscallsDto) {
     return await this.callsRepo.save(createBvscallsDto);
   }

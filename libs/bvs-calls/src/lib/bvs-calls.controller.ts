@@ -12,8 +12,12 @@ export class BvsCallsController {
   async getAllCalls(){
     return await this.bvsCallsService.getAllCalls();
   }
+  @Get('/2018')
+  async getAllCallsByYear() {
+    return await this.bvsCallsService.getAllCallsByYear();
+  }
 
-  @Post()
+  @Post('post/calls')
   saveCalls(@Body() createBvscallsDto:CreateBvscallsDto) {
     this.bvsCallsService.saveCalls(createBvscallsDto);
   }
