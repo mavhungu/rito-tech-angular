@@ -33,5 +33,5 @@ import { User } from './user/entities/user.entity';
 })
 
 export class AppModule {
-  dataSource: DataSource
+  constructor(private dataSource: DataSource) {}
 }
