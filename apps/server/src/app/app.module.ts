@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { DataSource } from 'typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -31,4 +32,6 @@ import { User } from './user/entities/user.entity';
   providers: [AppService],
 })
 
-export class AppModule {}
+export class AppModule {
+  dataSource: DataSource
+}
