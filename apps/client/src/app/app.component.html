@@ -1,4 +1,13 @@
-<p>{{user}}</p>
+<clr-datagrid>
+  <clr-dg-column>Month</clr-dg-column>
+  <clr-dg-column>Number of Calls</clr-dg-column>
+  <clr-dg-column>Total Cost</clr-dg-column>
+    <clr-dg-row *clrDgItems="let data of totalCost">
+      <clr-dg-cell>{{data.month}}</clr-dg-cell>
+      <clr-dg-cell>{{data.No_Calls}}</clr-dg-cell>
+      <clr-dg-cell>{{data.Total_Cost}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 
 <clr-datagrid>
   <clr-dg-column>ID</clr-dg-column>

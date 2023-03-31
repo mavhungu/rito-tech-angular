@@ -6,3 +6,4 @@ export * from './lib/call-list/call-list.component';
 export * from './lib/shared/title-strategy.service';
 export * from './lib/shared/api.service';
 export * from './lib/interfaces/calls';
+export * from './lib/interfaces/total-cost';
