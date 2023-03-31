@@ -4,6 +4,6 @@ import { CallListComponent, CallSummaryComponent, PageNotFoundComponent } from '
 
 export const appRoutes: Route[] = [
   { path: '', component: CallListComponent},
-  { path: 'summary', component: CallSummaryComponent },
+  { path: 'summary/:id', component: CallSummaryComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
