@@ -14,9 +14,9 @@ export class ApiService {
 
   getAllCalls(): Observable<Calls[]> {
     return this.http.get<Calls[]>('http://localhost:3333/api/bvs-calls');
-  };
+  }
 
-  getAllCallsByYear(): Observable<Calls[]> {
-    return this.http.get<Calls[]>('http://localhost:3333/api/bvs-calls/2018');
+  getAllCallsByYear() {
+    return this.http.get<Calls[]>('http://localhost:3333/api/bvs-calls/ronewa');
   }
 }

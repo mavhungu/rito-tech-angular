@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { BVSCalls } from '../entities/bvscalls.entity';
+import { Bvscalls } from '../entities/bvscalls.entity';
 
 export const BvsCallsDataSource = new DataSource({
   type: 'mysql',
@@ -8,7 +8,7 @@ export const BvsCallsDataSource = new DataSource({
   username: 'root',
   password: '',
   database: 'rito',
-  entities: [BVSCalls],
+  entities: [Bvscalls],
   synchronize: true
 })
 

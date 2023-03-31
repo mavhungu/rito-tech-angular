@@ -8,13 +8,14 @@ export class BvsCallsController {
   year = 2018;
   constructor(private bvsCallsService: BvsCallsService) {}
 
-  @Get('/')
-  async getAllCalls(){
-    return await this.bvsCallsService.getAllCalls();
+  @Get()
+  getAllCalls(){
+    return this.bvsCallsService.getAllCalls();
   }
-  @Get('/2018')
-  async getAllCallsByYear() {
-    return await this.bvsCallsService.getAllCallsByYear();
+  @Get('ronewa')
+  getAllCallsByYear() {
+    const years = this.year;
+    return this.bvsCallsService.getAllCallsByYears(years);
   }
 
   @Post('post/calls')

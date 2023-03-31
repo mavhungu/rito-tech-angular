@@ -12,22 +12,24 @@ export class AppComponent implements OnInit {
   page = 1;
   count = 0;
   pageSize = 20;
+  users: Calls[] =[];
+  user='';
 
   constructor(
     private api: ApiService,
   ) {}
 
   ngOnInit(): void {
-    this.getCallRecords();
-    this.getAllCallsByYear();
+    this.api.getAllCalls().subscribe(data => this.callsData = data );
+    this.api.getAllCallsByYear().subscribe( (users) =>{ console.log(users); this.users = users });
   }
 
-  getCallRecords() {
+  /*getCallRecords() {
     this.api.getAllCalls().subscribe(data => this.callsData = data );
   }
 
   getAllCallsByYear() {
     this.api.getAllCallsByYear().subscribe((data)=>{console.log(data)});
-  }
+  }*/
 
 }
