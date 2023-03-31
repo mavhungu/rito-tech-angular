@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   title = 'client';
   callsData: Calls[] = [];
   totalCost: TotalCost[] = [];
-  users: TotalCost[] = [];
   page = 1;
   count = 0;
   pageSize = 20;
@@ -20,8 +19,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllCallRecords();//.subscribe(data => this.callsData = data );
-    this.getAllCallsByYear();//.subscribe( users => this.users = users );
+    this.getAllCallRecords();
+    this.getAllCallsByYear();
   }
 
   getAllCallRecords() {
