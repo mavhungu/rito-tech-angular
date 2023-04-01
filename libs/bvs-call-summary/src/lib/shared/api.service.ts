@@ -20,4 +20,8 @@ export class ApiService {
   getAllCallsByYear() {
     return this.http.get<TotalCost[]>('http://localhost:3333/api/bvs-calls/ronewa');
   }
+
+  getAllCallsPerMonth(id: any) {
+    return this.http.get(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
+  }
 }
