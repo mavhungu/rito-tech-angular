@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Calls } from '../interfaces/calls';
-import { TotalCost } from '../interfaces/total-cost'
+import { TotalCost } from '../interfaces/total-cost';
+import { YearMonth } from '../interfaces/year-month';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,11 @@ export class ApiService {
   }
 
   getAllCallsByYear() {
-    return this.http.get<TotalCost[]>('http://localhost:3333/api/bvs-calls/ronewa');
+    return this.http.get<TotalCost[]>('http://localhost:3333/api/bvs-calls/call-by-year');
   }
 
-  getAllCallsPerMonth(id: any) {
-    return this.http.get(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
+  getAllCallsPerMonth(id: any): Observable<YearMonth[]> {
+    console.log("ID FROM ROUTER: "+id);
+    return this.http.get<YearMonth[]>(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { YearMonth } from '../interfaces/year-month';
 import { ApiService } from '@bvs-call-summary';
 
 @Component({
@@ -9,19 +10,26 @@ import { ApiService } from '@bvs-call-summary';
 })
 export class CallSummaryComponent implements OnInit {
 
-  monthCalls: [] = [];
+  yearMonth = '';
+  id = '';
+  monthCalls: YearMonth[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private api: ApiService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.id = this.router.snapshot.paramMap.get('id')!;
+    this.route.queryParams.subscribe(params => {
+      this.yearMonth = params['id'];
+    });
+    this.id = this.route.snapshot.paramMap.get('id')!;
     this.getCallsPerMonth(this.id);
   }
 
   getCallsPerMonth(id: any) {
-    this.api.getAllCallsPerMonth(id).subscribe((data)=> console.log(data));
+    console.log("YEARMONTH is :"+ this.yearMonth);
+    this.api.getAllCallsPerMonth(id).subscribe( data => this.monthCalls = data );
   }
 }

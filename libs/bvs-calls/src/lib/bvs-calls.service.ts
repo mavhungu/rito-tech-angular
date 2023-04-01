@@ -18,9 +18,11 @@ export class BvsCallsService {
 
   async getAllCallsByYears(year: number) {
     return await this.callsRepo.manager.query(`SELECT DATE_FORMAT(CallTime,'%Y-%m') month, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE YEAR(CallTime) = ${year} GROUP BY month`);
+  }
 
-    /*const rawData = await DataSource.manager.query(`SELECT DATE_FORMAT(CallTime,'%Y-%m') month, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM ${Bvscalls} WHERE YEAR(CallTime) = ${year} GROUP BY month`);
-    console.log(rawData);*/
+  async getAllCallsPerMonth(id: string) {
+    //return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE ${year%} GROUP BY CallFrom`);
+    return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE '${id}-%' GROUP BY CallFrom`);
   }
 
   async saveCalls(createBvscallsDto: CreateBvscallsDto) {

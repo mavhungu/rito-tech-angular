@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param } from '@nestjs/common';
 //import { Request } from 'express';
 import { BvsCallsService } from './bvs-calls.service';
 import { CreateBvscallsDto } from './dto';
@@ -12,10 +12,19 @@ export class BvsCallsController {
   getAllCalls(){
     return this.bvsCallsService.getAllCalls();
   }
-  @Get('ronewa')
+
+  @Get('call-by-year')
   getAllCallsByYear() {
     const years = this.year;
     return this.bvsCallsService.getAllCallsByYears(years);
+  }
+
+  @Get('call-per-month/:id')
+  getgetAllCallsPerMonth(
+    @Param('id') id: string
+  ) {
+    console.log(id);
+    return this.bvsCallsService.getAllCallsPerMonth(id);
   }
 
   @Post('post/calls')
