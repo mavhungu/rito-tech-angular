@@ -7,13 +7,14 @@ import { Bvscalls } from './entities/bvscalls.entity';
 
 @Injectable()
 export class BvsCallsService {
+
   constructor(
     @InjectRepository(Bvscalls) private callsRepo: Repository<Bvscalls>,
   ) {}
 
   async getAllCalls() {
-    const allUsers = await this.callsRepo.find();
-    return allUsers;
+    return await this.callsRepo.find();
+    //return allUsers;
   }
 
   async getAllCallsByYears(year: number) {
@@ -22,6 +23,10 @@ export class BvsCallsService {
 
   async getAllCallsPerMonth(id: string) {
     return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE '${id}-%' GROUP BY CallFrom`);
+  }
+
+  async getExtensionCallSummary(id: string, date: string) {
+    return await this.callsRepo.manager.query(`SELECT CallFrom, CallTo, CallTime , Duration, Cost FROM bvscalls WHERE CallFrom LIKE '${id}-%' and CallTime LIKE '${date}-%'`)
   }
 
   async saveCalls(createBvscallsDto: CreateBvscallsDto) {

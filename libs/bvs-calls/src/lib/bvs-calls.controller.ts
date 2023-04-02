@@ -27,6 +27,14 @@ export class BvsCallsController {
     return this.bvsCallsService.getAllCallsPerMonth(id);
   }
 
+  @Get('extension/:id&date')
+  getExtensionCallSummary(
+    @Param('id') id: string,
+    @Param('date') date: string
+  ) {
+    return this.bvsCallsService.getExtensionCallSummary(id, date);
+  }
+
   @Post('post/calls')
   saveCalls(@Body() createBvscallsDto:CreateBvscallsDto) {
     this.bvsCallsService.saveCalls(createBvscallsDto);

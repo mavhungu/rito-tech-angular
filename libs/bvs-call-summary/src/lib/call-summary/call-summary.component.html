@@ -4,7 +4,7 @@
   <clr-dg-column>Total Cost</clr-dg-column>
   <clr-dg-row *clrDgItems="let data of monthCalls">
     <clr-dg-cell>
-      <a [routerLink]="['/extension-summary/',data.CallFrom]" class="nav-link nav-text" routerLinkActive="active">{{data.CallFrom}}</a>
+      <a [routerLink]="['/extension-summary']" [queryParams]="{id:data.CallFrom,date:id}" class="nav-link nav-text" routerLinkActive="active">{{data.CallFrom}}</a>
     </clr-dg-cell>
     <clr-dg-cell>{{data.No_Calls}}</clr-dg-cell>
     <clr-dg-cell>{{data.Total_Cost}}</clr-dg-cell>

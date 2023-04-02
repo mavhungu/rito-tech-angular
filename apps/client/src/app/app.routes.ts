@@ -5,7 +5,7 @@ import { CallListComponent, CallSummaryComponent,ExtensionSummaryComponent, Page
 export const appRoutes: Route[] = [
   { path: '', component: CallListComponent},
   { path: 'summary/:id', component: CallSummaryComponent },
-  { path: 'extension-summary/:id', component: ExtensionSummaryComponent },
+  { path: 'extension-summary', component: ExtensionSummaryComponent },
   { path: "**", component: PageNotFoundComponent }
 
 ];
