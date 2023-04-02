@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { CreateBvscallsDto } from './dto';
 import { Bvscalls } from './entities/bvscalls.entity';
-//import { BvsCallsDataSource } from './data-source/app-data-source';
+
 
 @Injectable()
 export class BvsCallsService {
@@ -21,7 +21,6 @@ export class BvsCallsService {
   }
 
   async getAllCallsPerMonth(id: string) {
-    //return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE ${year%} GROUP BY CallFrom`);
     return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE '${id}-%' GROUP BY CallFrom`);
   }
 

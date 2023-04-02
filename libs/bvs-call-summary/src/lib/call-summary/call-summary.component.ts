@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { YearMonth } from '../interfaces/year-month';
 import { ApiService } from '@bvs-call-summary';
 
@@ -28,8 +28,7 @@ export class CallSummaryComponent implements OnInit {
     this.getCallsPerMonth(this.id);
   }
 
-  getCallsPerMonth(id: any) {
-    console.log("YEARMONTH is :"+ this.yearMonth);
+  getCallsPerMonth(id: string) {
     this.api.getAllCallsPerMonth(id).subscribe( data => this.monthCalls = data );
   }
 }

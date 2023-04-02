@@ -23,7 +23,6 @@ export class ApiService {
   }
 
   getAllCallsPerMonth(id: any): Observable<YearMonth[]> {
-    console.log("ID FROM ROUTER: "+id);
     return this.http.get<YearMonth[]>(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
   }
 }
