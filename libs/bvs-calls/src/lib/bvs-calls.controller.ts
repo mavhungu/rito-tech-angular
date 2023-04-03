@@ -1,11 +1,13 @@
 import { Body, Controller, Get, Post, Param } from '@nestjs/common';
 //import { Request } from 'express';
 import { BvsCallsService } from './bvs-calls.service';
-import { CreateBvscallsDto } from './dto';
+import { CreateBvscallsDto, IdDateDto } from './dto';
 
 @Controller('bvs-calls')
 export class BvsCallsController {
+
   year = 2018;
+
   constructor(private bvsCallsService: BvsCallsService) {}
 
   @Get()
@@ -23,16 +25,13 @@ export class BvsCallsController {
   getgetAllCallsPerMonth(
     @Param('id') id: string
   ) {
-    console.log(id);
     return this.bvsCallsService.getAllCallsPerMonth(id);
   }
 
-  @Get('extension/:id&date')
-  getExtensionCallSummary(
-    @Param('id') id: string,
-    @Param('date') date: string
-  ) {
-    return this.bvsCallsService.getExtensionCallSummary(id, date);
+
+  @Post('extension-calls')
+  getExtensionCallSummary(@Body() idDateDto: IdDateDto ) {
+    return this.bvsCallsService.getExtensionCallSummary(idDateDto);
   }
 
   @Post('post/calls')

@@ -27,9 +27,7 @@ export class ExtensionSummaryComponent implements OnInit {
   }
 
   getExtensionMonthSummary(extension: any) {
-    console.log(" ID IS "+ this.extension.params);
     const { id, date } = extension.params;
-    console.log("Id is : "+ id + " and date is: "+ date);
     this.api.getExtensionMonthSummary(extension.params).subscribe((data)=>{ console.log(data)});
   }
 
