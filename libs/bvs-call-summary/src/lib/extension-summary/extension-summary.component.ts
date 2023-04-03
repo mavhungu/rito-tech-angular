@@ -11,10 +11,7 @@ import { ApiService } from '@bvs-call-summary';
 })
 export class ExtensionSummaryComponent implements OnInit {
 
-  qqueryParams: any;
-  extension = '';
-  /*id:string;
-  date:string;*/
+  extension: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,24 +19,18 @@ export class ExtensionSummaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.extension = this.route.snapshot.paramMap.get('id')!;
-    this.getExtensionMonthSummary(this.extension);
     
     this.route.queryParamMap.subscribe((params) => {
-      this.qqueryParams = { ...params.keys, ...params };
-      this.getme(this.qqueryParams);
+      this.extension = { ...params.keys, ...params };
+      this.getExtensionMonthSummary(this.extension);
     });
   }
 
-  getExtensionMonthSummary(extension: string) {
-    console.log(" ID IS "+ extension);
-    console.log(this.qqueryParams);
-    //this.api.getExtensionMonthSummary(extension).subscribe((data)=>{ console.log(data)});
-  }
-
-  getme(data: any){
-    const {id, date} = data.params;
-    console.log("id is -: "+ id);
+  getExtensionMonthSummary(extension: any) {
+    console.log(" ID IS "+ this.extension.params);
+    const { id, date } = extension.params;
+    console.log("Id is : "+ id + " and date is: "+ date);
+    this.api.getExtensionMonthSummary(extension.params).subscribe((data)=>{ console.log(data)});
   }
 
 }

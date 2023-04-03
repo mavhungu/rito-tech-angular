@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Calls } from '../interfaces/calls';
 import { TotalCost } from '../interfaces/total-cost';
 import { YearMonth } from '../interfaces/year-month';
 import { ExtensionSummary } from '../interfaces/extension-summart';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +33,7 @@ export class ApiService {
     return this.http.get<YearMonth[]>(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
   }
 
-  getExtensionMonthSummary(extension: string): Observable<ExtensionSummary[]> {
-    return this.http.get<ExtensionSummary[]>(`http://localhost:3333/api/bvs-calls/extension-calls/${extension}`);
+  getExtensionMonthSummary(extension: any): Observable<ExtensionSummary[]> {
+    return this.http.post<ExtensionSummary[]>('http://localhost:3333/api/bvs-calls/extension-calls',JSON.stringify(extension), httpOptions,);
   }
 }
