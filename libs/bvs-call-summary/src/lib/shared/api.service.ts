@@ -33,11 +33,6 @@ export class ApiService {
     return this.http.get<YearMonth[]>(`http://localhost:3333/api/bvs-calls/call-per-month/${id}`);
   }
 
-  getExtensionRecords(extension: any): Observable<ExtensionSummary[]> {
-    console.log(extension)
-    return this.http.get<ExtensionSummary[]>(`http://localhost:3333/api/bvs-calls/extension-records/${extension}`);
-  }
-
   getExtensionMonthSummary(extension: any): Observable<ExtensionSummary[]> {
     console.log(extension);
     return this.http.post<ExtensionSummary[]>('http://localhost:3333/api/bvs-calls/extension-calls',JSON.stringify(extension), httpOptions,);

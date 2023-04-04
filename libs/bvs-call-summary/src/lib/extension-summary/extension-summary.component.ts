@@ -11,6 +11,7 @@ import { ApiService } from '@bvs-call-summary';
 export class ExtensionSummaryComponent implements OnInit {
 
   extension: any;
+  extensionSummary: [] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,17 +23,12 @@ export class ExtensionSummaryComponent implements OnInit {
     this.route.queryParamMap.subscribe((params) => {
       this.extension = { ...params.keys, ...params };
       this.getExtensionMonthSummary(this.extension);
-      //this.getExtensionRecords(this.extension);
     });
   }
 
   getExtensionMonthSummary(extension: any) {
     const { id, date } = extension.params;
     this.api.getExtensionMonthSummary(extension.params).subscribe((data)=>{ console.log(data)});
-  }
-
-  getExtensionRecords(extension: any) {
-    this.api.getExtensionRecords(extension.params).subscribe((data)=>{ console.log(data)});
   }
 
 }
