@@ -28,6 +28,11 @@ export class BvsCallsController {
     return this.bvsCallsService.getAllCallsPerMonth(id);
   }
 
+  @Get('extension-records/:id')
+  getExtensionRecords(@Param('id') idDateDto: IdDateDto) {
+    console.log(idDateDto);
+    return this.bvsCallsService.getExtensionRecords(idDateDto);
+  }
 
   @Post('extension-calls')
   getExtensionCallSummary(@Body() idDateDto: IdDateDto ) {

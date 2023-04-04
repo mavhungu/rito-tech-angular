@@ -25,13 +25,14 @@ export class BvsCallsService {
     return await this.callsRepo.manager.query(`SELECT CallFrom, COUNT(CallTo) AS No_Calls, SUM(Cost) AS Total_Cost FROM bvscalls WHERE CallTime LIKE '${id}-%' GROUP BY CallFrom`);
   }
 
+  async getExtensionRecords(idDateDto: IdDateDto) {
+    const { id, date } = idDateDto;
+    return await this.callsRepo.manager.query(`SELECT CallFrom, CallTo, CallTime , Duration, Cost FROM bvscalls WHERE CallFrom LIKE '${id}%' and CallTime LIKE '${date}-%'`);
+  }
+
   async getExtensionCallSummary(idDateDto: IdDateDto) {
     const { id, date } = idDateDto;
-    const dd = await this.callsRepo.manager.query(`SELECT CallFrom, CallTo, CallTime , Duration, Cost FROM bvscalls WHERE CallFrom LIKE '${id}-%' and CallTime LIKE '${date}-%'`);
-    const tt = await this.callsRepo.manager.query("SELECT CallFrom, CallTo, CallTime , Duration, Cost FROM `bvscalls` WHERE CallFrom LIKE 'Annie (2071)' and CallTime LIKE '2018-07'");
-    console.log(dd);
-    console.log(tt);
-    return dd;
+    return await this.callsRepo.manager.query(`SELECT CallFrom, CallTo, CallTime , Duration, Cost FROM bvscalls WHERE CallFrom LIKE '${id}%' and CallTime LIKE '${date}-%'`);
   }
 
   async saveCalls(createBvscallsDto: CreateBvscallsDto) {
