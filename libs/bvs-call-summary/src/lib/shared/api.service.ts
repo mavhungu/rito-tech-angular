@@ -34,7 +34,6 @@ export class ApiService {
   }
 
   getExtensionMonthSummary(extension: any): Observable<ExtensionSummary[]> {
-    console.log(extension);
     return this.http.post<ExtensionSummary[]>('http://localhost:3333/api/bvs-calls/extension-calls',JSON.stringify(extension), httpOptions,);
   }
 }

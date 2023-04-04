@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ApiService } from '@bvs-call-summary';
+import { ExtensionSummary } from '../interfaces/extension-summart';
 
 @Component({
   selector: 'shopping-app-extension-summary',
@@ -11,7 +12,7 @@ import { ApiService } from '@bvs-call-summary';
 export class ExtensionSummaryComponent implements OnInit {
 
   extension: any;
-  extensionSummary: [] = [];
+  extensionSummary: ExtensionSummary[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +29,7 @@ export class ExtensionSummaryComponent implements OnInit {
 
   getExtensionMonthSummary(extension: any) {
     const { id, date } = extension.params;
-    this.api.getExtensionMonthSummary(extension.params).subscribe((data)=>{ console.log(data)});
+    this.api.getExtensionMonthSummary(extension.params).subscribe(data => this.extensionSummary = data );
   }
 
 }
