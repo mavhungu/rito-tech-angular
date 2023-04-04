@@ -12,6 +12,7 @@ export class CallSummaryComponent implements OnInit {
 
   yearMonth = '';
   id = '';
+  pageSize=15;
   monthCalls: YearMonth[] = [];
 
   constructor(

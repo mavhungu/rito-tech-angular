@@ -1,4 +1,24 @@
-<div *ngFor="let data of extensionSummary">
-  {{ data | json }}
-</div>
+<clr-datagrid>
+  <clr-dg-column>CallFrom</clr-dg-column>
+  <clr-dg-column>CallTo</clr-dg-column>
+  <clr-dg-column>CallTime</clr-dg-column>
+  <clr-dg-column>Duration</clr-dg-column>
+  <clr-dg-column>Cost</clr-dg-column>
+    <clr-dg-row *clrDgItems="let data of extensionSummary">
+      <clr-dg-action-overflow>
+        <button class="action-item">Resolve</button>
+      </clr-dg-action-overflow>
+        <clr-dg-cell>{{data.CallFrom}}</clr-dg-cell>
+        <clr-dg-cell>{{data.CallTo}}</clr-dg-cell>
+        <clr-dg-cell>{{data.CallTime | date}}</clr-dg-cell>
+        <clr-dg-cell>{{data.Duration}}</clr-dg-cell>
+        <clr-dg-cell>{{data.Cost}}</clr-dg-cell>
+    </clr-dg-row>
+      <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="pageSize">
+          <clr-dg-page-size [clrPageSizeOptions]="[25,50,75,100]">Call Records</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{extensionSummary.length}} Records
+        </clr-dg-pagination>
+      </clr-dg-footer>
+</clr-datagrid>
 

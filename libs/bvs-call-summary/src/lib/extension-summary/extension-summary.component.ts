@@ -13,6 +13,7 @@ export class ExtensionSummaryComponent implements OnInit {
 
   extension: any;
   extensionSummary: ExtensionSummary[] = [];
+  pageSize=10;
 
   constructor(
     private route: ActivatedRoute,

@@ -10,6 +10,7 @@ import { ApiService } from '../shared/api.service';
 export class CallListComponent implements OnInit {
 
   totalCost: TotalCost[] = [];
+  pageSize=20;
 
   constructor(
     private api: ApiService,

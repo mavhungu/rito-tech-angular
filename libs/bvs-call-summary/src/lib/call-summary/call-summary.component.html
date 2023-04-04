@@ -2,11 +2,17 @@
   <clr-dg-column>Month</clr-dg-column>
   <clr-dg-column>Number of Calls</clr-dg-column>
   <clr-dg-column>Total Cost</clr-dg-column>
-  <clr-dg-row *clrDgItems="let data of monthCalls">
-    <clr-dg-cell>
-      <a [routerLink]="['/extension-summary']" [queryParams]="{id:data.CallFrom,date:id}" class="nav-link nav-text" routerLinkActive="active">{{data.CallFrom}}</a>
-    </clr-dg-cell>
-    <clr-dg-cell>{{data.No_Calls}}</clr-dg-cell>
-    <clr-dg-cell>{{data.Total_Cost}}</clr-dg-cell>
-  </clr-dg-row>
+    <clr-dg-row *clrDgItems="let data of monthCalls">
+      <clr-dg-cell>
+        <a [routerLink]="['/extension-summary']" [queryParams]="{id:data.CallFrom,date:id}" class="nav-link nav-text" routerLinkActive="active">{{data.CallFrom}}</a>
+      </clr-dg-cell>
+      <clr-dg-cell>{{data.No_Calls}}</clr-dg-cell>
+      <clr-dg-cell>{{data.Total_Cost}}</clr-dg-cell>
+    </clr-dg-row>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="pageSize">
+      <clr-dg-page-size [clrPageSizeOptions]="[25,50,75,100]">Call Records</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{monthCalls.length}} Records
+    </clr-dg-pagination>
+  </clr-dg-footer>
 </clr-datagrid>
